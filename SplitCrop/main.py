@@ -1,13 +1,29 @@
 from PIL import Image
 
-work_image = Image.open("crop6.jpg")
+work_image = Image.open("roll.jpg")
 # work_image.show()
-#
-#
+
 width = work_image.size[0]
 height = work_image.size[1]
 print(width)
 print(height)
+
+def split_to_two(image):
+    """Divides the photo into two equal parts"""
+
+    # GET LEFT SIDE OF THE IMAGE ###
+    left_side_crop = (0,0,width/2,height)
+    print(left_side_crop)
+    image_left_side = image.crop(left_side_crop)
+    image_left_side.save("left_side.jpg", quality=100)
+    image_left_side.show()
+
+    # GET RIGHT SIDE OF THE IMAGE ###
+    right_side_crop = (width / 2, 0, width, height)
+    print(right_side_crop)
+    image_right_side = image.crop(right_side_crop)
+    image_right_side.save("right_side.jpg", quality=100)
+    image_right_side.show()
 
 
 def split_to_three(image):
@@ -82,4 +98,15 @@ def split_to_six(image):
 
 
 split_to_three(work_image)
-split_to_six(work_image)
+# split_to_six(work_image)
+# split_to_two(work_image)
+
+
+#TODO: 1. Make a GUI(tkinter)
+#TODO: 2. Make a Users sign up/in.
+#TODO: 3. Make cross section crops.
+#TODO: 4. Fing help for phone programing.
+#TODO: 5. Make an end window "after operation is done go to gallery or crop again".
+#TOD0: 6. Crop counter/subscription (2 free crops a day, 1$ for 5 crops, 5$ for unlimited crops).
+
+
