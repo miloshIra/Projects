@@ -1,4 +1,3 @@
-
 from tkinter import *
 
 
@@ -7,7 +6,9 @@ def print_user():
 
 
 starting_window = Tk()
+starting_window.title("Split|Crop")
 # starting_window.minsize(480, 640)
+starting_window.iconbitmap(r"./static/iconDP.ico")
 
 user_var = StringVar()
 password_var = StringVar()
@@ -26,10 +27,10 @@ user_entry = Entry(text="Username", textvariable=user_var,)
 user_entry.grid(column=1, row=1)
 
 password_entry = Entry(text="password", textvariable=password_var)
-password_entry.grid(column=1, row=2)
+password_entry.grid(column=1, row=2, padx=50, pady=5)
 
 print_user_button = Button(text="Print User", command=print_user)
-print_user_button.grid(column=1, row=3)
+print_user_button.grid(column=1, row=3, pady=10,)
 
 
 starting_window.mainloop()
