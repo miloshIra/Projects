@@ -1,7 +1,14 @@
 from tkinter import *
+from models import User
 
+def login():
+    registered_user = User(user_var.get(), password_var.get())
+    registered_user.login()
 
-
+def register():
+    new_user = User(user_var.get(), password_var.get())
+    report = new_user.register()
+    info_label.config(text=report)
 
 def print_user():
     print(user_var.get())
@@ -29,12 +36,12 @@ user_entry = Entry(text="Username", textvariable=user_var,)
 user_entry.grid(column=1, row=1)
 
 password_var = StringVar()
-password_entry = Entry(text="password", textvariable=password_var)
+password_entry = Entry(text="password", textvariable=password_var, show="*")
 password_entry.grid(column=1, row=2, padx=10)
 
-login_user_button = Button(text="Login",)
+login_user_button = Button(text="Login", command=login)
 login_user_button.grid(column=1, row=3, pady=15)
 
-register_user_button = Button(text="Register",)
+register_user_button = Button(text="Register", command=register)
 register_user_button.grid(column=1, row=4)
 starting_window.mainloop()

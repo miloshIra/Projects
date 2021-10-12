@@ -1,7 +1,5 @@
 
-
 users_database = {"Milosh": "Ira"}  # Dictionary that replaces a database, I am to lazy and dumb to make a DB"
-
 
 
 class User(object):
@@ -15,15 +13,15 @@ class User(object):
         if self.username not in users_database:
             users_database.update({self.username: self.password})
         else:
-            print("Username Already exists, try another one")
+            return "Username Already exists,\n try another one."
 
     def login(self):
-        if self.username in users_database.keys() and self.password in users_database[self.username] == self.password:
-            print("Logging in")  # Goes to user window
-        elif self.username in users_database.keys() and self.password != users_database[self.username]:
-            print("Wrong password try again!")   # gui.info_label.config(text="Wrong password try again!")
+        if self.username in users_database and self.password in users_database[self.username] == self.password:
+            return "Logging in"  # Goes to user window
+        elif self.username in users_database and self.password != users_database[self.username]:
+            return "Wrong password try again!"   # gui.info_label.config(text="Wrong password try again!")
         else:
-            print("No such credentials, register.")  # gui.info_label.config(text="No such credentials, please register"
+            return "No such credentials, register."  # gui.info_label.config(text="No such credentials, please register"
 
     def get_by_username(self):
         """Some thing admins might need."""
