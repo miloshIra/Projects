@@ -3,7 +3,8 @@ from models import User
 
 def login():
     registered_user = User(user_var.get(), password_var.get())
-    registered_user.login()
+    report = registered_user.login()
+    info_label.config(text=report)
 
 def register():
     new_user = User(user_var.get(), password_var.get())

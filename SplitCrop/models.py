@@ -12,12 +12,13 @@ class User(object):
         """Registers a user"""
         if self.username not in users_database:
             users_database.update({self.username: self.password})
+            return "User registered please log in"
         else:
             return "Username Already exists,\n try another one."
 
-    def login(self):
+    def login(self):  # Make your username show in window title if logged in.
         if self.username in users_database and self.password in users_database[self.username] == self.password:
-            return "Logging in"  # Goes to user window
+            return "You are now logged in"  # Goes to user window
         elif self.username in users_database and self.password != users_database[self.username]:
             return "Wrong password try again!"   # gui.info_label.config(text="Wrong password try again!")
         else:
