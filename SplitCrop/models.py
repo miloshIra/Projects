@@ -1,5 +1,7 @@
 
-users_database = {}  # Dictionary that replaces a database, I am to lazy and dumb to make a DB"
+
+users_database = {"Milosh": "Ira"}  # Dictionary that replaces a database, I am to lazy and dumb to make a DB"
+
 
 
 class User(object):
@@ -16,9 +18,9 @@ class User(object):
             print("Username Already exists, try another one")
 
     def login(self):
-        if self.username in users_database.keys() and self.password in users_database.values():
-            return True  # Goes to user window
-        elif self.username in users_database.keys() and self.password not in users_database.values():
+        if self.username in users_database.keys() and self.password in users_database[self.username] == self.password:
+            print("Logging in")  # Goes to user window
+        elif self.username in users_database.keys() and self.password != users_database[self.username]:
             print("Wrong password try again!")   # gui.info_label.config(text="Wrong password try again!")
         else:
             print("No such credentials, register.")  # gui.info_label.config(text="No such credentials, please register"
@@ -31,7 +33,7 @@ class User(object):
         """Some thing admins might need, also I need to add id attribute to the class."""
         pass
 
-    def login_valid(self):
+    def logged(self):
         """Check if you are already logged it"""
         pass
 
@@ -44,13 +46,17 @@ class User(object):
         pass
 
 
-Milosh = User("Milosh", "Ira")
+
+
+Milosh = User("Milosh", "123")
 Sanda = User("Sandra", "Krofna")
+# Ace = User("Ace", "123")
 
 Sanda.register()
-print(Milosh.username)
 
 Milosh.register()
 print(users_database)
 
 Milosh.login()
+
+# Ace.login()

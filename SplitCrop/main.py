@@ -1,6 +1,4 @@
 from PIL import Image
-import gui
-
 
 work_image = Image.open("./static/ce1.jpg")
 # work_image.show()
@@ -108,7 +106,7 @@ split_to_two(work_image)
 # TODO: 1. Make a GUI(tkinter)
 # TODO: 2. Make a Users sign up/in.
 # TODO: 3. Make cross section crops.
-# TODO: 4. Find help for phone programing.
+# TODO: 4. Kivy is a python mobile framework, kinda sucks tho..
 # TODO: 5. Make an end window "after operation is done go to gallery or crop again".
-# TOD0: 6. Crop counter/subscription (2 free crops a day, 1$ for 5 crops, 5$ for unlimited crops).
+
 
