@@ -1,5 +1,5 @@
 
-users_database = {"Milosh": "Ira"}  # Dictionary that replaces a database, I am to lazy and dumb to make a DB"
+users_database = {"Milosh": "Ira", "ads": "asd"}  # Dictionary that replaces a database, I am to lazy and dumb to make a DB"
 
 
 class User(object):
@@ -18,7 +18,7 @@ class User(object):
 
     def login(self):  # Make your username show in window title if logged in.
         if self.username in users_database and self.password in users_database[self.username] == self.password:
-            return "You are now logged in"  # Goes to user window
+            return True  # Goes to user window
         elif self.username in users_database and self.password != users_database[self.username]:
             return "Wrong password try again!"   # gui.info_label.config(text="Wrong password try again!")
         else:
@@ -45,17 +45,14 @@ class User(object):
         pass
 
 
-
-
 Milosh = User("Milosh", "123")
 Sanda = User("Sandra", "Krofna")
-# Ace = User("Ace", "123")
+asd = User("asd", "asd")
 
+asd.register()
 Sanda.register()
-
 Milosh.register()
 print(users_database)
 
 Milosh.login()
-
 # Ace.login()

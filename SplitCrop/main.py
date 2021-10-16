@@ -1,7 +1,10 @@
 from PIL import Image
+import gui
 
-work_image = Image.open("./static/ce1.jpg")
-# work_image.show()
+
+work_image = Image.open(gui.file_browser.get())
+print(work_image)
+work_image.show()
 
 width = work_image.size[0]
 height = work_image.size[1]
@@ -11,7 +14,6 @@ print(height)
 
 def split_to_two(image):
     """Divides the photo into two equal parts"""
-
     # GET LEFT SIDE OF THE IMAGE ###
     left_side_crop = (0, 0, width/2, height)
     print(left_side_crop)
@@ -104,9 +106,8 @@ split_to_two(work_image)
 
 
 # TODO: 1. Make a GUI(tkinter)
-# TODO: 2. Make a Users sign up/in.
+# TODO: 2. Make a database instead of dictionary.
 # TODO: 3. Make cross section crops.
 # TODO: 4. Kivy is a python mobile framework, kinda sucks tho..
 # TODO: 5. Make an end window "after operation is done go to gallery or crop again".
-
 
