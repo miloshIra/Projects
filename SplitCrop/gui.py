@@ -1,4 +1,6 @@
 from tkinter import *
+
+import main
 from models import User
 from tkinter import filedialog
 import time
@@ -45,6 +47,7 @@ def go_to_work_window():
         image_height = work_image.size[1]
         image_ratio = image_width/image_height
 
+
         while image_width > 800:
             image_width -= 10
 
@@ -58,22 +61,28 @@ def go_to_work_window():
         photo_canvas.config(width=image_width_resize, height=image_height_resize)
         photo_canvas.create_image(0, 0, image=background, anchor=NW)
         # find_photo_button.grid_forget()
-        work_window.geometry(str(image_width_resize + 200) + 'x' + str(round(image_height_resize) + 80))
+        work_window.geometry(str(image_width_resize + 30) + 'x' + str(round(image_height_resize) + 80))
         find_photo_button.config(show=hide)
-
+        return work_image
 
     # find_photo_label = Label(work_window, text="Select photo")
     # find_photo_label.grid(column=0, row=0, padx=15, pady=10)
+
+    split_button = Button(work_window, text="Split", command=main.split_to_two)
+    split_button.grid(column=1, row=0)
+
+    # find_photo_button = Button(work_window, text="Select photo", command=file_browser)
+    # find_photo_button.grid(column=1, row=0, padx=15, pady=10)
 
     find_photo_button = Button(work_window, text="Select photo", command=file_browser)
     find_photo_button.grid(column=0, row=0, padx=15, pady=10)
 
     photo_frame_widget = LabelFrame(work_window, text="Splitting Image ")
-    photo_frame_widget.grid(column=0, row=1, padx=10)
+    photo_frame_widget.grid(column=0, row=1, columnspan=3, rowspan=3, padx=10)
 
     # myCanvas = tkinter.Canvas(root, bg="white", height=300, width=300)
     photo_canvas = Canvas(photo_frame_widget, height=500, width=500)
-    photo_canvas.grid(column=0, row=0)
+    photo_canvas.grid(column=0, row=0, columnspan=3, rowspan=3)
 
 
 log_window = Tk()
