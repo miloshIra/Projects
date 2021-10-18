@@ -2,6 +2,7 @@ from tkinter import *
 from models import User
 from tkinter import filedialog
 import time
+from PIL import Image, ImageTk
 
 
 def login():
@@ -25,7 +26,7 @@ def print_user():
 def go_to_work_window():
     """Open working window after logging in"""
     work_window = Toplevel(log_window)
-    work_window.geometry("400x350")
+    work_window.geometry("530x580")
     work_window.title("Work window")
     work_window.focus_force()
     time.sleep(0.5)
@@ -38,7 +39,28 @@ def go_to_work_window():
                                                      ("all files", "*.*")))
 
         print(filename)
-        # return filename
+        work_image = Image.open(filename)
+        work_image.show()
+        image_width = work_image.size[0]
+        image_height = work_image.size[1]
+        image_ratio = image_width/image_height
+
+        while image_width > 800:
+            image_width -= 10
+
+        image_width_resize = image_width
+        image_height_resize = image_width_resize * image_ratio
+        print(image_height_resize, image_width_resize)
+        work_image = work_image.resize((round(image_width_resize), round(image_height_resize)))
+        background = ImageTk.PhotoImage(work_image)
+        # photo_canvas = Canvas(photo_frame_widget)
+        # photo_canvas.grid(column=0, row=0)
+        photo_canvas.config(width=image_width_resize, height=image_height_resize)
+        photo_canvas.create_image(0, 0, image=background, anchor=NW)
+        # find_photo_button.grid_forget()
+        work_window.geometry(str(image_width_resize + 200) + 'x' + str(round(image_height_resize) + 80))
+        find_photo_button.config(show=hide)
+
 
     # find_photo_label = Label(work_window, text="Select photo")
     # find_photo_label.grid(column=0, row=0, padx=15, pady=10)
@@ -46,10 +68,11 @@ def go_to_work_window():
     find_photo_button = Button(work_window, text="Select photo", command=file_browser)
     find_photo_button.grid(column=0, row=0, padx=15, pady=10)
 
-    photo_frame_widget = LabelFrame(work_window, text=" Editing Image ")
+    photo_frame_widget = LabelFrame(work_window, text="Splitting Image ")
     photo_frame_widget.grid(column=0, row=1, padx=10)
 
-    photo_canvas = Canvas(photo_frame_widget, bg='blue')
+    # myCanvas = tkinter.Canvas(root, bg="white", height=300, width=300)
+    photo_canvas = Canvas(photo_frame_widget, height=500, width=500)
     photo_canvas.grid(column=0, row=0)
 
 

@@ -1,19 +1,12 @@
 from PIL import Image
-import gui
-
-
-work_image = Image.open(gui.file_browser.get())
-print(work_image)
-work_image.show()
-
-width = work_image.size[0]
-height = work_image.size[1]
-print(width)
-print(height)
 
 
 def split_to_two(image):
     """Divides the photo into two equal parts"""
+
+    width = image.size[0]
+    height = image.size[1]
+
     # GET LEFT SIDE OF THE IMAGE ###
     left_side_crop = (0, 0, width/2, height)
     print(left_side_crop)
@@ -31,6 +24,9 @@ def split_to_two(image):
 
 def split_to_three(image):
     """Divides the photo into three equal parts"""
+
+    width = image.size[0]
+    height = image.size[1]
 
     # GET THE LEFT PART OF THE IMAGE ###
     left_crop_image = (0, 0, round(width / 3), height)
@@ -56,6 +52,9 @@ def split_to_three(image):
 
 def split_to_six(image):
     """Divides the photo into six equal parts"""
+
+    width = image.size[0]
+    height = image.size[1]
 
     # GET THE LEFT TOP PART OF THE IMAGE ###
     top_left_crop_image = (0, 0, width / 3, height/2)
@@ -100,9 +99,9 @@ def split_to_six(image):
     top_right_image.show()
 
 
-# split_to_three(work_image)
-# split_to_six(work_image)
-split_to_two(work_image)
+# split_to_three(image)
+# split_to_six(image)
+# split_to_two(image)
 
 
 # TODO: 1. Make a GUI(tkinter)
