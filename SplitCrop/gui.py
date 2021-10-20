@@ -1,5 +1,4 @@
 from tkinter import *
-
 import main
 from models import User
 from tkinter import filedialog
