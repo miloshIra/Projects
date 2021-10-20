@@ -24,14 +24,18 @@ def print_user():
     print(user_var.get())
 
 
+
 def go_to_work_window():
     """Open working window after logging in"""
+
     work_window = Toplevel(log_window)
     work_window.geometry("530x580")
     work_window.title("Work window")
     work_window.focus_force()
     time.sleep(0.5)
     log_window.withdraw()  # Hides logging window
+
+    work_image = None
 
     def file_browser():
         """Let's you select a file then it resizes and displays it on the canvas"""
@@ -42,6 +46,7 @@ def go_to_work_window():
                                                      ("all files", "*.*")))
 
         print(filename)
+        nonlocal work_image
         work_image = Image.open(filename)
         work_image.show()
 
@@ -86,14 +91,16 @@ def go_to_work_window():
             work_window.geometry(str(round(image_width_resize + 30)) + 'x' + str(round(image_height_resize) + 80))
             find_photo_button.config(show=hide)
 
-        # def split_two():
-        #     main.split_to_two(work_image)
+    def split_image():
+        main.split_to_two(work_image)
 
+        # Add if functions that read the value of a dropdown menu for the number of splits.
 
     # find_photo_label = Label(work_window, text="Select photo")
     # find_photo_label.grid(column=0, row=0, padx=15, pady=10)
 
-    split_button = Button(work_window, text="Split")
+
+    split_button = Button(work_window, text="Split", command= split_image)
     split_button.grid(column=1, row=0)
 
     # find_photo_button = Button(work_window, text="Select photo", command=file_browser)
