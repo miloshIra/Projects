@@ -35,6 +35,8 @@ def go_to_work_window():
     log_window.withdraw()  # Hides logging window
 
     def file_browser():
+        """Let's you select a file then it resizes and displays it on the canvas"""
+
         filename = filedialog.askopenfilename(initialdir="Desktop", title="Select photo",
                                               filetypes=(("jpg files", "*.jpg"),
                                                      ("png files", "*.png"),
@@ -43,32 +45,56 @@ def go_to_work_window():
         print(filename)
         work_image = Image.open(filename)
         work_image.show()
+
         image_width = work_image.size[0]
         image_height = work_image.size[1]
-        image_ratio = image_width/image_height
 
+        if image_width >= image_height:
+            print("Width is bigger")
+            image_ratio = image_height/image_width
+            while image_width > 500:
+                image_width -= 10
 
-        while image_width > 800:
-            image_width -= 10
+            image_width_resize = image_width
+            image_height_resize = image_width_resize * image_ratio
+            print(image_width_resize, image_height_resize)
+            display_image = work_image.resize((round(image_width_resize), round(image_height_resize)))
+            background = ImageTk.PhotoImage(display_image)
+            # photo_canvas = Canvas(photo_frame_widget)
+            # photo_canvas.grid(column=0, row=0)
+            photo_canvas.config(width=image_width_resize, height=image_height_resize)
+            photo_canvas.create_image(0, 0, image=background, anchor=NW)
+            # find_photo_button.grid_forget()
+            work_window.geometry(str(round(image_width_resize + 30)) + 'x' + str(round(image_height_resize) + 80))
+            find_photo_button.config(show=hide)
 
-        image_width_resize = image_width
-        image_height_resize = image_width_resize * image_ratio
-        print(image_height_resize, image_width_resize)
-        work_image = work_image.resize((round(image_width_resize), round(image_height_resize)))
-        background = ImageTk.PhotoImage(work_image)
-        # photo_canvas = Canvas(photo_frame_widget)
-        # photo_canvas.grid(column=0, row=0)
-        photo_canvas.config(width=image_width_resize, height=image_height_resize)
-        photo_canvas.create_image(0, 0, image=background, anchor=NW)
-        # find_photo_button.grid_forget()
-        work_window.geometry(str(image_width_resize + 30) + 'x' + str(round(image_height_resize) + 80))
-        find_photo_button.config(show=hide)
-        return work_image
+        else:
+            print("Height is bigger")
+            image_ratio = image_width/image_height #/image_width
+            while image_height > 500:
+                image_height -= 10
+
+            image_height_resize = image_height
+            image_width_resize = image_height_resize * image_ratio
+            print(image_width_resize, image_height_resize)
+            display_image = work_image.resize((round(image_width_resize), round(image_height_resize)))
+            background = ImageTk.PhotoImage(display_image)
+            # photo_canvas = Canvas(photo_frame_widget)
+            # photo_canvas.grid(column=0, row=0)
+            photo_canvas.config(width=image_width_resize, height=image_height_resize)
+            photo_canvas.create_image(0, 0, image=background, anchor=NW)
+            # find_photo_button.grid_forget()
+            work_window.geometry(str(round(image_width_resize + 30)) + 'x' + str(round(image_height_resize) + 80))
+            find_photo_button.config(show=hide)
+
+        # def split_two():
+        #     main.split_to_two(work_image)
+
 
     # find_photo_label = Label(work_window, text="Select photo")
     # find_photo_label.grid(column=0, row=0, padx=15, pady=10)
 
-    split_button = Button(work_window, text="Split", command=main.split_to_two)
+    split_button = Button(work_window, text="Split")
     split_button.grid(column=1, row=0)
 
     # find_photo_button = Button(work_window, text="Select photo", command=file_browser)
