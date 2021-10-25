@@ -1,5 +1,5 @@
-from PIL import Image
 import random
+
 
 def split_to_two(image):
     """Divides the photo into two equal parts"""
@@ -107,5 +107,3 @@ def split_to_six(image):
 # TODO: 2. Make a database instead of dictionary.
 # TODO: 3. Make cross section crops.
 # TODO: 4. Kivy is a python mobile framework, kinda sucks tho..
-
-
