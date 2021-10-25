@@ -104,9 +104,8 @@ def split_to_six(image):
 # split_to_two(image)
 
 
-# TODO: 1. Make a GUI(tkinter)
 # TODO: 2. Make a database instead of dictionary.
 # TODO: 3. Make cross section crops.
 # TODO: 4. Kivy is a python mobile framework, kinda sucks tho..
-# TODO: 5. Make an end window "after operation is done go to gallery or crop again".
+
 
