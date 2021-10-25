@@ -1,5 +1,5 @@
 from PIL import Image
-
+import random
 
 def split_to_two(image):
     """Divides the photo into two equal parts"""
@@ -11,14 +11,14 @@ def split_to_two(image):
     left_side_crop = (0, 0, width/2, height)
     print(left_side_crop)
     image_left_side = image.crop(left_side_crop)
-    image_left_side.save("left_side.jpg", quality=100)
+    image_left_side.save("left_side"+str(random.randint(1, 10000))+".jpg", quality=100)
     image_left_side.show()
 
     # GET RIGHT SIDE OF THE IMAGE ###
     right_side_crop = (width / 2, 0, width, height)
     print(right_side_crop)
     image_right_side = image.crop(right_side_crop)
-    image_right_side.save("right_side.jpg", quality=100)
+    image_right_side.save("right_side"+str(random.randint(1, 10000))+".jpg", quality=100)
     image_right_side.show()
 
 

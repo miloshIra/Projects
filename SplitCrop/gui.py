@@ -24,7 +24,6 @@ def print_user():
     print(user_var.get())
 
 
-
 def go_to_work_window():
     """Open working window after logging in"""
 
@@ -92,13 +91,23 @@ def go_to_work_window():
             find_photo_button.config(show=hide)
 
     def split_image():
-        main.split_to_two(work_image)
-
+        if clicked.get() == 2:
+            main.split_to_two(work_image)
+        elif clicked.get() == 3:
+            main.split_to_three(work_image)
+        elif clicked.get() == 6:
+            main.split_to_six(work_image)
+        print(clicked)
         # Add if functions that read the value of a dropdown menu for the number of splits.
 
     # find_photo_label = Label(work_window, text="Select photo")
     # find_photo_label.grid(column=0, row=0, padx=15, pady=10)
 
+    clicked = IntVar()
+    clicked.set(2)
+
+    splits_drop_down = OptionMenu(work_window, clicked, 2, 3, 6)
+    splits_drop_down.grid(column= 2, row=0)
 
     split_button = Button(work_window, text="Split", command= split_image)
     split_button.grid(column=1, row=0)
