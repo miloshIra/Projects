@@ -29,7 +29,7 @@ def go_to_work_window():
 
     work_window = Toplevel(log_window)
     work_window.geometry("530x580")
-    work_window.title("Work window")
+    work_window.title(str(user_var.get()))
     work_window.focus_force()
     time.sleep(0.5)
     log_window.withdraw()  # Hides logging window

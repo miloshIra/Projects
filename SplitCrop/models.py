@@ -1,5 +1,5 @@
 
-users_database = {"Milosh": "Ira", "ads": "asd"}  # Dictionary that replaces a database, I am to lazy and dumb to make a DB"
+users_database = {"Milosh": "Ira", "asd": "asd"}  # Dictionary that replaces a database, I am to lazy and dumb to make a DB"
 
 
 class User(object):
@@ -45,14 +45,14 @@ class User(object):
         pass
 
 
-Milosh = User("Milosh", "123")
-Sanda = User("Sandra", "Krofna")
-asd = User("asd", "asd")
+# Milosh = User("Milosh", "123")
+# Sanda = User("Sandra", "Krofna")
+# asd = User("asd", "asd")
+#
+# asd.register()
+# Sanda.register()
+# Milosh.register()
+# print(users_database)
 
-asd.register()
-Sanda.register()
-Milosh.register()
-print(users_database)
-
-Milosh.login()
+# Milosh.login()
 # Ace.login()
