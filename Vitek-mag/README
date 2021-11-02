@@ -1,0 +1,3 @@
+A simple script with a GUI that compares the serial number of shiping boxes.
+It uses a barcode readed as input device and runs of a raspberrypi/raspbian system.
+Also logs all activity in a csv file for further use.
