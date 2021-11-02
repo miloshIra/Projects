@@ -99,11 +99,7 @@ def split_to_six(image):
     top_right_image.show()
 
 
-# split_to_three(image)
-# split_to_six(image)
-# split_to_two(image)
-
-
 # TODO: 2. Make a database instead of dictionary.
 # TODO: 3. Make cross section crops.
 # TODO: 4. Kivy is a python mobile framework, kinda sucks tho..
+# TODO: 5. Improve result image naming, add uuid possibly.

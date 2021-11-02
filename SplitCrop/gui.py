@@ -7,6 +7,7 @@ from PIL import Image, ImageTk
 
 
 def login():
+    """Call the log in function from the User class"""
     registered_user = User(user_var.get(), password_var.get())
     report = registered_user.login()
     info_label.config(text=report)
@@ -15,6 +16,7 @@ def login():
 
 
 def register():
+    """Call the user register function from the User class"""
     new_user = User(user_var.get(), password_var.get())
     report = new_user.register()
     info_label.config(text=report)
@@ -32,7 +34,7 @@ def go_to_work_window():
     work_window.title(str(user_var.get()))
     work_window.focus_force()
     time.sleep(0.5)
-    log_window.withdraw()  # Hides logging window
+    log_window.withdraw()
 
     work_image = None
 
@@ -63,17 +65,14 @@ def go_to_work_window():
             print(image_width_resize, image_height_resize)
             display_image = work_image.resize((round(image_width_resize), round(image_height_resize)))
             background = ImageTk.PhotoImage(display_image)
-            # photo_canvas = Canvas(photo_frame_widget)
-            # photo_canvas.grid(column=0, row=0)
             photo_canvas.config(width=image_width_resize, height=image_height_resize)
             photo_canvas.create_image(0, 0, image=background, anchor=NW)
-            # find_photo_button.grid_forget()
             work_window.geometry(str(round(image_width_resize + 30)) + 'x' + str(round(image_height_resize) + 80))
             find_photo_button.config(show=hide)
 
         else:
             print("Height is bigger")
-            image_ratio = image_width/image_height #/image_width
+            image_ratio = image_width/image_height
             while image_height > 500:
                 image_height -= 10
 
@@ -82,38 +81,29 @@ def go_to_work_window():
             print(image_width_resize, image_height_resize)
             display_image = work_image.resize((round(image_width_resize), round(image_height_resize)))
             background = ImageTk.PhotoImage(display_image)
-            # photo_canvas = Canvas(photo_frame_widget)
-            # photo_canvas.grid(column=0, row=0)
             photo_canvas.config(width=image_width_resize, height=image_height_resize)
             photo_canvas.create_image(0, 0, image=background, anchor=NW)
-            # find_photo_button.grid_forget()
             work_window.geometry(str(round(image_width_resize + 30)) + 'x' + str(round(image_height_resize) + 80))
             find_photo_button.config(show=hide)
 
     def split_image():
-        if clicked.get() == 2:
+        """Calls the split function from main depending on whats selected"""
+        if crops.get() == 2:
             main.split_to_two(work_image)
-        elif clicked.get() == 3:
+        elif crops.get() == 3:
             main.split_to_three(work_image)
-        elif clicked.get() == 6:
+        elif crops.get() == 6:
             main.split_to_six(work_image)
-        print(clicked)
-        # Add if functions that read the value of a dropdown menu for the number of splits.
 
-    # find_photo_label = Label(work_window, text="Select photo")
-    # find_photo_label.grid(column=0, row=0, padx=15, pady=10)
+    crops = IntVar()
+    crops.set(2)
 
-    clicked = IntVar()
-    clicked.set(2)
-
-    splits_drop_down = OptionMenu(work_window, clicked, 2, 3, 6)
+    splits_drop_down = OptionMenu(work_window, crops, 2, 3, 6)
     splits_drop_down.grid(column= 2, row=0)
 
     split_button = Button(work_window, text="Split", command= split_image)
     split_button.grid(column=1, row=0)
 
-    # find_photo_button = Button(work_window, text="Select photo", command=file_browser)
-    # find_photo_button.grid(column=1, row=0, padx=15, pady=10)
 
     find_photo_button = Button(work_window, text="Select photo", command=file_browser)
     find_photo_button.grid(column=0, row=0, padx=15, pady=10)
@@ -121,7 +111,6 @@ def go_to_work_window():
     photo_frame_widget = LabelFrame(work_window, text="Splitting Image ")
     photo_frame_widget.grid(column=0, row=1, columnspan=3, rowspan=3, padx=10)
 
-    # myCanvas = tkinter.Canvas(root, bg="white", height=300, width=300)
     photo_canvas = Canvas(photo_frame_widget, height=500, width=500)
     photo_canvas.grid(column=0, row=0, columnspan=3, rowspan=3)
 

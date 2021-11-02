@@ -3,7 +3,7 @@ users_database = {"Milosh": "Ira", "asd": "asd"}  # Dictionary that replaces a d
 
 
 class User(object):
-
+    """Defines what the user and and what it can do"""
     def __init__(self, username, password):  # This class needs to have an id too.
         self.username = username
         self.password = password
@@ -16,9 +16,10 @@ class User(object):
         else:
             return "Username Already exists,\n try another one."
 
-    def login(self):  # Make your username show in window title if logged in.
+    def login(self):
+        """Logs in the user """
         if self.username in users_database and self.password in users_database[self.username] == self.password:
-            return True  # Goes to user window
+            return True
         elif self.username in users_database and self.password != users_database[self.username]:
             return "Wrong password try again!"   # gui.info_label.config(text="Wrong password try again!")
         else:
@@ -44,15 +45,3 @@ class User(object):
         """This is the payment method if it is even done like this .. if not I am dumb shoot me"""
         pass
 
-
-# Milosh = User("Milosh", "123")
-# Sanda = User("Sandra", "Krofna")
-# asd = User("asd", "asd")
-#
-# asd.register()
-# Sanda.register()
-# Milosh.register()
-# print(users_database)
-
-# Milosh.login()
-# Ace.login()
