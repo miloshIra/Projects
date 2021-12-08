@@ -1,1 +1,1 @@
-This is a folder where all the images will be it as a placeholder for the phone library.
+This is a folder where all the images will be. Placeholder for the phone library.
