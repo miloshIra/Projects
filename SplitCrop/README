@@ -2,3 +2,4 @@ This is a simple Desktop app waiting to go mobile.
 It takes a photo of you want and splits it into 2/3/6 parts so you can upload it on social networks as different photos.
 Make your profile a more creative place somethin like:  https://www.instagram.com/trevor.p.thompson/?hl=en
 It uses PIL and tkinter.
+Still a work in progress but it's main function works well.
